@@ -578,16 +578,16 @@ void loop()
        SM = digitalRead(SensorMiddle);
        SL = digitalRead(SensorLeft);
                    
-         if (SM == HIGH)//中感測器在黑色區域
+         if (SM == HIGH)//中感測器在白色區域
        {
-          if (SL == HIGH && SR == LOW) // 左黑右白, 向左轉彎
+          if (SL == HIGH && SR == LOW) // 左白右黑, 向左轉彎
           {  
              digitalWrite(MotorRight2,LOW);
              digitalWrite(MotorRight1,HIGH);
              analogWrite(MotorLeft2,20);
              analogWrite(MotorLeft1,0);
           }
-          else if (SR == HIGH && SL == LOW) //左白右黑, 向右轉彎
+          else if (SR == HIGH && SL == LOW) //左黑右白, 向右轉彎
           {  
              analogWrite(MotorRight2,20);//右轉
              analogWrite(MotorRight1,0);
@@ -602,23 +602,23 @@ void loop()
              digitalWrite(MotorLeft2,LOW);
          }      
        }
-       else // 中感測器在白色區域
+       else // 中感測器在黑色區域
       {  
-         if (SL == HIGH && SR == LOW)// 左黑右白, 快速左轉
+         if (SL == HIGH && SR == LOW)// 左白右黑, 快速左轉
         {  
             digitalWrite(MotorRight2,LOW);
             digitalWrite(MotorRight1,HIGH);
             digitalWrite(MotorLeft2,LOW);
             digitalWrite(MotorLeft1,LOW);
         }
-         else if (SR == HIGH && SL == LOW) // 左白右黑, 快速右轉
+         else if (SR == HIGH && SL == LOW) // 左黑右白, 快速右轉
         {  
            digitalWrite(MotorRight2,LOW);
            digitalWrite(MotorRight1,LOW);
            digitalWrite(MotorLeft2,LOW);
            digitalWrite(MotorLeft1,HIGH);
         }
-         else // 都是白色, 停止
+         else // 都是黑色, 停止
         {   
         digitalWrite(MotorRight1,LOW);
         digitalWrite(MotorRight2,LOW);
